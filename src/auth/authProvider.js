@@ -1,22 +1,26 @@
 const authProvider = {
     // called when the user attempts to log in
-    login: ({ username, password }) => {
-        const request = new Request('http://192.168.11.104:8443/api/v1/login', {
+    login: ({ username: email, password }) => {
+        const request = new Request("http://192.168.11.104:8443/api/v1/users/login", {
             method: 'POST',
-            body: JSON.stringify({ username, password }),
+            body: JSON.stringify({ email, password }),
             headers: new Headers({ 'Content-Type': 'application/json' }),
         });
         return fetch(request)
             .then(response => {
-                console.log(response)
+                // console.log(response);
                 if (response.status < 200 || response.status >= 300) {
+                    // console.log(response.json().then(message => message.message))
                     throw new Error(response.statusText);
                 }
+
                 return response.json();
             })
             .then((auth) => {
                 localStorage.setItem('auth', JSON.stringify(auth));
-            }).catch(() => {
+                // console.log(JSON.parse(localStorage.getItem("auth")).token);
+            })
+            .catch(() => {
                 throw new Error('Network error')
             });
     },
@@ -41,6 +45,7 @@ const authProvider = {
     },
     // called when the user navigates to a new location, to check for permissions / roles
     getPermissions: () => Promise.resolve(),
+
 
 };
 
