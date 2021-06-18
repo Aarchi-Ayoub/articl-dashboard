@@ -4,23 +4,19 @@ import {
   Datagrid,
   TextField,
   DateField,
-  NumberField,
   EditButton,
   DeleteButton,
   ShowButton,
   EmailField,
 } from "react-admin";
-const ListArticls = (props) => {
+const ListOrders = (props) => {
   return (
     <List {...props}>
       <Datagrid>
         <TextField source="id" />
-        <TextField source="description" />
-        <TextField source="name" />
-        <NumberField source="price" />
-
-        <EmailField source="user.email" label="Owner" />
-        <DateField source="created_at" />
+        <TextField source="status" />
+        <EmailField source="user.email" label="Buyer" />
+        <DateField source="Commande_at" />
 
         <EditButton label="Edit" basePath="/articls" />
         <DeleteButton label="Delete" basePath="/articls" />
@@ -30,4 +26,4 @@ const ListArticls = (props) => {
   );
 };
 
-export default ListArticls;
+export default ListOrders;

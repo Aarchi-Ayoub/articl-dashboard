@@ -3,9 +3,9 @@ import { Filter, ReferenceInput, SelectInput, TextInput } from "react-admin";
 const FilterUsers = (props) => {
   return (
     <Filter {...props}>
-      <TextInput label="Search" source="role" alwaysOn />
+      <TextInput label="Role" source="role" alwaysOn />
       <ReferenceInput label="Name" source="id" reference="users" allowEmpty>
-        <SelectInput optionText="first_name" />
+        <SelectInput optionText="email" />
       </ReferenceInput>
     </Filter>
   );

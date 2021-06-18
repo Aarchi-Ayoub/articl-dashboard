@@ -24,13 +24,12 @@ const EditUsers = (props) => {
           choices={[
             { id: "active", name: "Active" },
             { id: "disabled", name: "Disable" },
+            { id: "deleted", name: "Deleted" },
           ]}
         />
 
-        <TextInput source="email" />
         <TextInput source="first_name" />
         <TextInput source="last_name" />
-        <DateInput source="created_at" />
       </SimpleForm>
     </Edit>
   );
